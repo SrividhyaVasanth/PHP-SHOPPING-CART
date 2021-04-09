@@ -30,17 +30,16 @@
 $showAlert = false; 
 $showError = false; 
 $exists=false;
+
+include "config.php";
+ session_start();
+ echo "i am here";
     
 if($_SERVER["REQUEST_METHOD"] == "POST") {
       
     // Include file which makes the
     // Database Connection.
     include 'config.php';   
-    
-    $username = $_POST["username"]; 
-    $password = $_POST["password"]; 
-    $cpassword = $_POST["cpassword"];
-            
     
     $sql = "Select * from users where username='$username'";
     
@@ -52,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // the username is already present 
     // or not in our Database
     if($num == 0) {
-        if(($password == $cpassword) && $exists==false) {
+        if(($password == $password) && $exists==false) {
     
             $hash = password_hash($password, 
                                 PASSWORD_DEFAULT);
@@ -150,7 +149,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container my-4 ">
     
     <h1 class="text-center">Signup Here</h1> 
-    <form action="index.php" method="post">
+    <form action="view.php" method="post">
     
         <div class="form-group"> 
             <label for="username">Username</label> 
@@ -179,10 +178,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </button> 
     </form> 
 </div>
-    
-<!-- Optional JavaScript --> 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
+
+
 <script src="
 https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="
@@ -205,4 +202,5 @@ https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 </script> 
 </body> 
 </html>
+
 
