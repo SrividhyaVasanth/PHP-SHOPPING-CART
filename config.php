@@ -1,9 +1,14 @@
-<?php
-$conn=mysqli_connect("localhost","newuser","P4\$\$w0rd123","cart");
-// Check connection
-if (!$conn){
-  echo 'connection error:' . mysqli_connect_error();
+<?php 
+
+$server = "localhost";
+$user = "newuser";
+$pass = "P4\$\$w0rd123";
+$database = "login_register";
+
+$conn = mysqli_connect($server, $user, $pass, $database);
+
+if (!$conn) {
+    die("<script>alert('Connection Failed.')</script>");
 }
 
 ?>
-
